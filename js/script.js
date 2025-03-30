@@ -158,35 +158,43 @@ document.addEventListener("DOMContentLoaded", function () {
   // Hero Section Background Image Transition
   // ==========================================
   const heroSection = document.querySelector(".hero");
+  const accessKey = "XuzzJD10bFVu1c-j5U3wJEh0DAq8aUK9uZM2uC--2YA";
+  async function fetchUnsplashImage() {
+    try {
+      if (!accessKey) return "images/default.jpg"; // Prevent API call if no key
 
-async function getUnsplashImage() {
-  try {
-    const response = await fetch("https://source.unsplash.com/random/1600x900/?technology");
-    return response.url;
-  } catch (error) {
-    console.error("Error fetching image:", error);
-    return "images/default.jpg"; // Fallback image
+      const response = await fetch(
+        `https://api.unsplash.com/photos/random?query=technology&client_id=${accessKey}`
+      );
+
+      if (!response.ok) throw new Error("Failed to fetch image");
+
+      const data = await response.json();
+      return data.urls?.regular || "images/default.jpg"; // Fallback image
+    } catch (error) {
+      console.error("Error fetching Unsplash image:", error);
+      return "images/default.jpg";
+    }
   }
-}
 
-async function changeBackground() {
-  const nextImage = await getUnsplashImage();
+  async function changeBackground() {
+    if (!heroSection) {
+      console.error("Hero section not found in the DOM.");
+      return;
+    }
 
-  const overlay = document.createElement("div");
-  overlay.className = "hero-overlay";
-  overlay.style.backgroundImage = `url(${nextImage})`;
-  heroSection.appendChild(overlay);
+    let nextImage = "images/default.jpg"; // Default fallback
 
-  setTimeout(() => {
-    overlay.style.opacity = 1;
-  }, 10);
+    if (accessKey) {
+      nextImage = await fetchUnsplashImage();
+    }
 
-  setTimeout(() => {
+    // Apply fade transition
+    heroSection.style.transition = "background-image 1s ease-in-out";
     heroSection.style.backgroundImage = `url(${nextImage})`;
-    overlay.remove();
-  }, 1000);
-}
+  }
 
-// Change background every 5 seconds
-setInterval(changeBackground, 5000);
-changeBackground();
+  // Change background every 5 seconds
+  setInterval(changeBackground, 5000);
+  changeBackground();
+});
