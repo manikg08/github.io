@@ -137,38 +137,33 @@ header .container {
   color: var(--dark-color);
 }
 
+/* Hero Section */
 .hero {
   position: relative;
+  height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   background-size: cover;
   background-position: center;
+  transition: background-image 1s ease-in-out;
 }
 
-/* Dark overlay to ensure text visibility */
-.hero::before {
-  content: "";
+.hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
-  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
-/* Make sure the content is positioned above the overlay */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  color: white; /* Ensure text is white for contrast */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Add text shadow for extra readability */
-}
-
-/* Make sure the hero buttons have proper contrast too */
-.hero-content .btn {
-  position: relative;
-  z-index: 2;
-  border: 2px solid white;
-  font-weight: bold;
+.hero-overlay.fade-in {
+  opacity: 1;
 }
 
 /* About Section */
