@@ -211,6 +211,13 @@ header .container {
   background-color: var(--primary-color);
 }
 
+.project-image img {
+  width: 100%; /* Adjust size as needed */
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
 /* Projects Section */
 .projects {
   padding: 80px 0;
