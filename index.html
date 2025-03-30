@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My GitHub Website</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1 class="logo">My Portfolio</h1>
+        <nav>
+          <ul class="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <button class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h2>Welcome to My Website</h2>
+          <p>
+            Hi, I'm a developer passionate about creating amazing web
+            experiences.
+          </p>
+          <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Hello! I'm a passionate web developer with experience in HTML,
+              CSS, and JavaScript. I love creating responsive and user-friendly
+              websites.
+            </p>
+            <p>
+              My journey in web development started when I built my first
+              website. Since then, I've been continuously learning and improving
+              my skills.
+            </p>
+            <div class="skills">
+              <h3>My Skills</h3>
+              <div class="skill-bars">
+                <div class="skill">
+                  <span>HTML</span>
+                  <div class="skill-bar">
+                    <div class="skill-level" style="width: 90%"></div>
+                  </div>
+                </div>
+                <div class="skill">
+                  <span>CSS</span>
+                  <div class="skill-bar">
+                    <div class="skill-level" style="width: 85%"></div>
+                  </div>
+                </div>
+                <div class="skill">
+                  <span>JavaScript</span>
+                  <div class="skill-bar">
+                    <div class="skill-level" style="width: 75%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title">My Projects</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <div class="project-image">
+              <div class="project-placeholder"></div>
+            </div>
+            <div class="project-info">
+              <h3>Project One</h3>
+              <p>A responsive website built with HTML, CSS, and JavaScript.</p>
+              <a href="#" class="btn btn-sm">View Project</a>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-image">
+              <div class="project-placeholder"></div>
+            </div>
+            <div class="project-info">
+              <h3>Project Two</h3>
+              <p>
+                An interactive web application with modern design principles.
+              </p>
+              <a href="#" class="btn btn-sm">View Project</a>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-image">
+              <div class="project-placeholder"></div>
+            </div>
+            <div class="project-info">
+              <h3>Project Three</h3>
+              <p>A portfolio website showcasing my latest work and skills.</p>
+              <a href="#" class="btn btn-sm">View Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <p>email@example.com</p>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <p>+1 (123) 456-7890</p>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <p>City, Country</p>
+            </div>
+            <div class="social-links">
+              <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-block">Send Message</button>
+            </form>
+            <div id="formStatus" class="form-status"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 My Portfolio. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
