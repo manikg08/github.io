@@ -453,75 +453,108 @@ footer {
 }
 /* Experience Section */
 .experience {
-  padding: 60px 0;
-  background: #f9f9f9;
+  padding: 80px 0;
+  background: #f8f9fa;
 }
 
-.section-title {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 40px;
-  color: #333;
-}
-
-/* Experience Item Styling */
 .experience-item {
   background: white;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 4px solid var(--primary-color);
 }
 
-/* Header with Company & Date */
+.experience-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
 .experience-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
-  font-weight: bold;
-  margin-bottom: 5px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 5px;
+  margin-bottom: 12px;
 }
 
 .company {
-  color: #007bff;
-  font-weight: bold;
-  flex-grow: 1;
+  font-weight: 600;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  margin: 0;
 }
 
 .date {
-  color: #555;
-  font-style: italic;
-  text-align: right;
-  min-width: 150px;
+  color: #6c757d;
+  font-size: 0.95rem;
+  background-color: rgba(52, 152, 219, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
 }
 
-/* Job Title */
-h3 {
-  margin: 5px 0;
-  font-size: 1.3rem;
-  color: #222;
+.experience-item h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.4rem;
+  color: #343a40;
+  font-weight: 600;
 }
 
-/* Achievements & Tasks */
-h4 {
-  font-size: 1.1rem;
-  margin-top: 10px;
+.experience-item h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 15px 0 10px 0;
+  color: #495057;
 }
 
-ul {
-  padding-left: 20px;
+.experience-item ul {
+  list-style-type: none;
+  padding-left: 5px;
+  margin-bottom: 15px;
 }
 
-ul li {
-  margin-bottom: 5px;
+.experience-item ul li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 
-/* Technologies Used */
+.experience-item ul li:before {
+  content: "•";
+  color: var(--primary-color);
+  font-size: 18px;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
 .technologies {
-  font-weight: bold;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e9ecef;
+  font-size: 0.95rem;
+}
+
+.technologies strong {
+  color: #495057;
+}
+
+/* For skills tags within experience */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-top: 10px;
+}
+
+.skill-tag {
+  background-color: rgba(52, 152, 219, 0.1);
+  color: var(--primary-color);
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
 }
