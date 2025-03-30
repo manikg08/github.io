@@ -474,7 +474,7 @@ footer {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Header with Date & Company */
+/* Header with Company & Date */
 .experience-header {
   display: flex;
   justify-content: space-between;
@@ -482,21 +482,21 @@ footer {
   font-size: 1rem;
   font-weight: bold;
   margin-bottom: 5px;
-}
-
-.date {
-  color: #555;
-  font-style: italic;
-  min-width: 150px;
-  text-align: right;
-  flex-shrink: 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
 }
 
 .company {
   color: #007bff;
   font-weight: bold;
   flex-grow: 1;
-  padding-left: 15px;
+}
+
+.date {
+  color: #555;
+  font-style: italic;
+  text-align: right;
+  min-width: 150px;
 }
 
 /* Job Title */
