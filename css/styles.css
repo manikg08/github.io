@@ -245,18 +245,13 @@ header .container {
 /* Projects Section */
 .projects {
   padding: 80px 0;
-  background-color: var(
-    --light-color
-  ); /* Matches your theme's light background */
+  background-color: var(--light-color);
 }
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(350px, 1fr)
-  ); /* Slightly larger min width for better card size */
-  gap: 30px; /* More breathing room between cards */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
 }
 
 .project-card {
@@ -264,14 +259,15 @@ header .container {
   border-radius: var(--border-radius);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: var(--transition); /* Using your theme's transition */
+  transition: var(--transition);
 }
 
 .project-card:hover {
-  transform: translateY(-5px); /* Subtle lift on hover */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* Single Image Styling (for Project 1) */
 .project-image-wrapper {
   position: relative;
   overflow: hidden;
@@ -279,7 +275,7 @@ header .container {
 
 .project-image {
   width: 100%;
-  height: 200px; /* Consistent height for images */
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -289,12 +285,12 @@ header .container {
 .project-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures images fit nicely without distortion */
-  transition: var(--transition); /* Smooth zoom effect */
+  object-fit: cover;
+  transition: var(--transition);
 }
 
 .project-card:hover .project-img {
-  transform: scale(1.05); /* Slight zoom on hover */
+  transform: scale(1.05);
 }
 
 .project-placeholder {
@@ -313,13 +309,45 @@ header .container {
   background-size: 20px 20px;
 }
 
+/* Gallery Styling (for Project 2) */
+.project-gallery-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 100px);
+  gap: 5px;
+  height: 205px; /* Matches the height of project-image for consistency */
+}
+
+.project-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.project-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Ensure the first image in the gallery is larger */
+.project-gallery img:first-child {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  height: 100px;
+}
+
 .project-info {
   padding: 20px;
 }
 
 .project-info h3 {
   margin-bottom: 10px;
-  font-size: 1.5rem; /* Slightly larger for better hierarchy */
+  font-size: 1.5rem;
   color: var(--dark-color);
 }
 
@@ -327,13 +355,42 @@ header .container {
   margin-bottom: 15px;
   color: #666;
   font-size: 1rem;
-  line-height: 1.6; /* Improved readability */
+  line-height: 1.6;
 }
 
 .project-info h4 {
   margin-bottom: 5px;
   font-size: 1.1rem;
   color: var(--dark-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .project-image {
+    height: 150px;
+  }
+
+  .project-gallery {
+    grid-template-rows: repeat(2, 75px);
+    height: 155px;
+  }
+
+  .project-gallery img:first-child {
+    height: 75px;
+  }
+
+  .project-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .project-info p {
+    font-size: 0.9rem;
+  }
 }
 
 /* Modal Styles */
