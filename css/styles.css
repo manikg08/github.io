@@ -245,36 +245,56 @@ header .container {
 /* Projects Section */
 .projects {
   padding: 80px 0;
-  background-color: #f9f9f9;
+  background-color: var(
+    --light-color
+  ); /* Matches your theme's light background */
 }
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(350px, 1fr)
+  ); /* Slightly larger min width for better card size */
+  gap: 30px; /* More breathing room between cards */
 }
 
 .project-card {
   background-color: white;
   border-radius: var(--border-radius);
-  overflow: hidden;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  transition: var(--transition);
+  overflow: hidden;
+  transition: var(--transition); /* Using your theme's transition */
 }
 
 .project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px); /* Subtle lift on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+.project-image-wrapper {
+  position: relative;
+  overflow: hidden;
 }
 
 .project-image {
   width: 100%;
-  height: 200px; /* Adjust height as needed */
+  height: 200px; /* Consistent height for images */
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* Prevents overflow */
-  border-radius: 8px; /* Optional: rounds corners */
+  overflow: hidden;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures images fit nicely without distortion */
+  transition: var(--transition); /* Smooth zoom effect */
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.05); /* Slight zoom on hover */
 }
 
 .project-placeholder {
@@ -299,11 +319,21 @@ header .container {
 
 .project-info h3 {
   margin-bottom: 10px;
+  font-size: 1.5rem; /* Slightly larger for better hierarchy */
+  color: var(--dark-color);
 }
 
 .project-info p {
   margin-bottom: 15px;
   color: #666;
+  font-size: 1rem;
+  line-height: 1.6; /* Improved readability */
+}
+
+.project-info h4 {
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  color: var(--dark-color);
 }
 
 /* Modal Styles */
@@ -433,48 +463,6 @@ footer {
   text-align: center;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-
-  .menu {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    transform: translateY(-150%);
-    transition: var(--transition);
-  }
-
-  .menu.active {
-    transform: translateY(0);
-  }
-
-  .menu li {
-    margin: 10px 0;
-  }
-
-  .hero-content h2 {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .hero-content h2 {
-    font-size: 1.8rem;
-  }
-
-  .section-title {
-    font-size: 1.5rem;
-  }
-}
 /* Experience Section */
 .experience {
   padding: 80px 0;
@@ -607,7 +595,7 @@ footer {
 .quote-text::before {
   content: "“";
   font-size: 3rem;
-  color: #007bff; /* A blue accent color, adjust to match your theme */
+  color: var(--primary-color); /* Updated to use theme color */
   position: absolute;
   left: -40px;
   top: -10px;
@@ -616,7 +604,7 @@ footer {
 .quote-text::after {
   content: "”";
   font-size: 3rem;
-  color: #007bff;
+  color: var(--primary-color); /* Updated to use theme color */
   position: absolute;
   right: -40px;
   bottom: -10px;
@@ -628,8 +616,55 @@ footer {
   font-weight: 500;
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .menu {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-150%);
+    transition: var(--transition);
+  }
+
+  .menu.active {
+    transform: translateY(0);
+  }
+
+  .menu li {
+    margin: 10px 0;
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr; /* Stack cards on smaller screens */
+    gap: 20px;
+  }
+
+  .project-image {
+    height: 150px; /* Slightly smaller images on mobile */
+  }
+
+  .project-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .project-info p {
+    font-size: 0.9rem;
+  }
+
   .quote-text {
     font-size: 1.4rem;
   }
@@ -643,5 +678,15 @@ footer {
 
   .quote-author {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
   }
 }
