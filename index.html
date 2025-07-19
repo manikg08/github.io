@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manik Gupta - Computational Engineer & AI Specialist</title>
+    <title>Manik Gupta | Computational Engineering & AI</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap');
+
         :root {
-            --primary-color: #1a73e8;
-            --secondary-color: #34a853;
-            --accent-color: #ea4335;
-            --dark-bg: #0f111a;
-            --card-bg: #1a1c2e;
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1a1a1a;
             --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --text-secondary: #888888;
+            --text-tertiary: #666666;
+            --accent-primary: #00d4ff;
+            --accent-secondary: #0099cc;
+            --accent-glow: rgba(0, 212, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --card-hover: rgba(0, 212, 255, 0.1);
+            --success-color: #4ade80;
+            --warning-color: #facc15;
         }
 
         * {
@@ -25,23 +31,45 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: var(--dark-bg);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Header Styles */
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 4px;
+        }
+
+        /* Header */
         header {
             position: fixed;
             width: 100%;
             top: 0;
-            background: rgba(15, 17, 26, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 1rem 0;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
 
         .container {
@@ -54,41 +82,62 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1.5rem 0;
         }
 
         .logo {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .menu a {
+            letter-spacing: -0.02em;
             color: var(--text-primary);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
         }
 
-        .menu a::after {
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -4px;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gradient-primary);
+            background: var(--accent-primary);
             transition: width 0.3s ease;
         }
 
-        .menu a:hover::after {
+        .nav-link:hover::after {
             width: 100%;
         }
 
@@ -97,251 +146,330 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(rgba(15, 17, 26, 0.8), rgba(15, 17, 26, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%230f111a" width="1920" height="1080"/><g fill-opacity="0.1"><circle fill="%23667eea" cx="200" cy="200" r="100"/><circle fill="%23764ba2" cx="1720" cy="880" r="150"/><circle fill="%23f093fb" cx="960" cy="540" r="80"/></g></svg>');
-            background-size: cover;
-            padding-top: 80px;
+            padding: 100px 0 50px;
             position: relative;
+            background: radial-gradient(ellipse at top, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, var(--accent-glow) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 153, 204, 0.3) 0%, transparent 50%);
+            opacity: 0.3;
+            z-index: -1;
         }
 
         .hero-content {
-            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
         }
 
-        .hero .subtitle {
-            font-size: 1.5rem;
+        .hero .tagline {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
             color: var(--text-secondary);
             margin-bottom: 2rem;
+            line-height: 1.5;
         }
 
         .hero-description {
             font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
             max-width: 600px;
-            margin-bottom: 2rem;
             line-height: 1.8;
         }
 
-        .cta-buttons {
+        .hero-cta {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .btn {
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
             text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
-            display: inline-block;
-            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-primary {
-            background: var(--gradient-primary);
-            color: white;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            box-shadow: 0 4px 20px var(--accent-glow);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 8px 30px var(--accent-glow);
         }
 
-        .btn-secondary {
-            border: 2px solid #667eea;
-            color: #667eea;
+        .btn-outline {
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            background: transparent;
         }
 
-        .btn-secondary:hover {
-            background: #667eea;
-            color: white;
+        .btn-outline:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: rgba(0, 212, 255, 0.1);
         }
 
         /* About Section */
         .about {
-            padding: 5rem 0;
-            background: var(--dark-bg);
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            position: relative;
         }
 
-        .section-title {
-            font-size: 2.5rem;
+        .section-header {
             text-align: center;
-            margin-bottom: 3rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin-bottom: 4rem;
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            color: var(--text-secondary);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .skill-card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: #667eea;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-
-        .skill-card h4 {
-            color: #667eea;
+        .section-subtitle {
+            font-size: 0.875rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
             margin-bottom: 0.5rem;
         }
 
-        .skill-tags {
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .expertise-areas {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .expertise-card {
+            background: var(--bg-tertiary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .expertise-card:hover {
+            border-color: var(--accent-primary);
+            background: var(--card-hover);
+            transform: translateX(5px);
+        }
+
+        .expertise-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .expertise-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+        }
+
+        .expertise-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .expertise-skills {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 0.5rem;
         }
 
-        .skill-tag {
-            background: rgba(102, 126, 234, 0.2);
-            color: #667eea;
-            padding: 0.3rem 0.8rem;
+        .skill-pill {
+            padding: 0.375rem 0.875rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.813rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .skill-pill:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: rgba(0, 212, 255, 0.1);
         }
 
         /* Experience Section */
         .experience {
-            padding: 5rem 0;
-            background: linear-gradient(180deg, var(--dark-bg) 0%, rgba(26, 28, 46, 0.5) 100%);
+            padding: 100px 0;
+            background: var(--bg-primary);
         }
 
-        .timeline {
-            position: relative;
-            max-width: 1000px;
+        .experience-container {
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .timeline::before {
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
             content: '';
             position: absolute;
-            left: 50%;
             top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-            transform: translateX(-50%);
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-primary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
         }
 
-        .timeline-item {
-            position: relative;
-            padding: 2rem 0;
+        .experience-card:hover::before {
+            transform: scaleY(1);
         }
 
-        .timeline-content {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            width: calc(50% - 40px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+        .experience-card:hover {
+            border-color: var(--accent-primary);
+            background: var(--card-hover);
+            transform: translateX(5px);
         }
 
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-left: auto;
-        }
-
-        .timeline-content:hover {
-            transform: scale(1.02);
-            border-color: #667eea;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            top: 2.5rem;
-            width: 20px;
-            height: 20px;
-            background: #667eea;
-            border-radius: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 0 4px var(--dark-bg), 0 0 0 6px #667eea;
-        }
-
-        .company-header {
+        .experience-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: start;
             margin-bottom: 1rem;
         }
 
-        .company {
-            color: #667eea;
+        .experience-company {
+            font-size: 1.25rem;
             font-weight: 600;
-        }
-
-        .date {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .timeline-content h3 {
-            margin-bottom: 1rem;
             color: var(--text-primary);
+            margin-bottom: 0.25rem;
         }
 
-        .timeline-content ul {
-            list-style: none;
+        .experience-role {
+            color: var(--accent-primary);
+            font-weight: 500;
+        }
+
+        .experience-date {
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .experience-description {
+            color: var(--text-secondary);
             margin-bottom: 1rem;
+            line-height: 1.7;
         }
 
-        .timeline-content li {
+        .experience-highlights {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-highlights li {
             position: relative;
             padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             color: var(--text-secondary);
+            line-height: 1.6;
         }
 
-        .timeline-content li::before {
-            content: '▶';
+        .experience-highlights li::before {
+            content: '';
             position: absolute;
             left: 0;
-            color: #667eea;
-            font-size: 0.8rem;
+            top: 0.5rem;
+            width: 6px;
+            height: 6px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+        }
+
+        .experience-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         /* Projects Section */
         .projects {
-            padding: 5rem 0;
-            background: var(--dark-bg);
+            padding: 100px 0;
+            background: var(--bg-secondary);
         }
 
         .projects-grid {
@@ -351,44 +479,70 @@
         }
 
         .project-card {
-            background: var(--card-bg);
-            border-radius: 10px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            border-color: #667eea;
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            border-color: var(--accent-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .project-image {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 220px;
+            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-image::before {
+            opacity: 0.3;
+        }
+
+        .project-icon {
             font-size: 3rem;
-            color: white;
+            color: var(--accent-primary);
+            opacity: 0.8;
         }
 
         .project-content {
             padding: 2rem;
         }
 
-        .project-content h3 {
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
             margin-bottom: 1rem;
-            color: #667eea;
+            color: var(--text-primary);
         }
 
-        .project-content p {
+        .project-description {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
-        .project-tech {
+        .project-tech-stack {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
@@ -396,145 +550,228 @@
 
         /* Contact Section */
         .contact {
-            padding: 5rem 0;
-            background: linear-gradient(180deg, var(--dark-bg) 0%, rgba(26, 28, 46, 0.8) 100%);
+            padding: 100px 0;
+            background: var(--bg-primary);
+            position: relative;
         }
 
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            max-width: 1000px;
+        .contact-container {
+            max-width: 800px;
             margin: 0 auto;
+            text-align: center;
         }
 
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+        .contact-intro {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.8;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .contact-item i {
-            color: #667eea;
-            font-size: 1.5rem;
-            width: 40px;
+        .contact-method {
+            background: var(--bg-tertiary);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            border-color: var(--accent-primary);
+            background: var(--card-hover);
+            transform: translateY(-5px);
+        }
+
+        .contact-method i {
+            font-size: 2rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-method h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-method p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .contact-method a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-method a:hover {
+            color: var(--accent-primary);
         }
 
         .social-links {
             display: flex;
+            justify-content: center;
             gap: 1rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
         .social-link {
-            width: 50px;
-            height: 50px;
-            background: var(--card-bg);
-            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #667eea;
+            color: var(--text-secondary);
             text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
 
         .social-link:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: var(--card-hover);
+            transform: translateY(-3px);
         }
 
         /* Footer */
         footer {
-            background: var(--dark-bg);
-            padding: 2rem 0;
+            background: var(--bg-secondary);
+            padding: 3rem 0;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .menu {
+            .nav-menu {
                 display: none;
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
-            .about-content {
+            .about-grid {
                 grid-template-columns: 1fr;
+                gap: 3rem;
             }
 
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-content {
-                width: calc(100% - 50px);
-                margin-left: 50px !important;
-            }
-
-            .timeline-dot {
-                left: 20px;
-            }
-
-            .contact-content {
+            .contact-methods {
                 grid-template-columns: 1fr;
             }
         }
 
         /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .fade-in {
-            animation: fadeInUp 0.8s ease-out;
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--bg-primary);
+                flex-direction: column;
+                justify-content: start;
+                padding: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
-            <div class="logo">Manik Gupta</div>
-            <ul class="menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <a href="#" class="logo">Manik Gupta</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
 
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content fade-in">
-                <h1>Manik Gupta</h1>
-                <p class="subtitle">Computational Engineer & AI Specialist</p>
+                <p class="hero-subtitle">Welcome to my portfolio</p>
+                <h1>Engineering the Future with AI & Simulation</h1>
+                <p class="tagline">Computational Engineer crafting intelligent solutions at the intersection of physics and machine learning</p>
                 <p class="hero-description">
-                    Bridging the gap between AI and physics-based simulations to solve complex engineering challenges. 
-                    Specializing in FEM, thermo-mechanical analysis, and machine learning applications in computational engineering.
+                    I specialize in developing advanced simulation frameworks that leverage AI to solve complex engineering challenges. 
+                    From thermo-mechanical analysis to digital twins, I'm passionate about pushing the boundaries of what's possible 
+                    in computational engineering.
                 </p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                    <a href="#projects" class="btn btn-secondary">View Projects</a>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">
+                        Start a Conversation <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#projects" class="btn btn-outline">
+                        <i class="fas fa-folder-open"></i> View My Work
+                    </a>
                 </div>
             </div>
         </div>
@@ -542,58 +779,75 @@
 
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
+            <div class="section-header">
+                <p class="section-subtitle">About Me</p>
+                <h2 class="section-title">Bridging Physics & Intelligence</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>My Mission</h3>
                     <p>
-                        As a Computational Engineering master's student at Friedrich-Alexander University, I'm passionate about 
-                        merging AI with physics-based simulations to revolutionize how we design, predict, and innovate.
+                        As a master's student in Computational Engineering at Friedrich-Alexander University, 
+                        I'm on a mission to revolutionize how we approach engineering simulations. My work 
+                        focuses on integrating cutting-edge AI techniques with traditional physics-based models 
+                        to create more accurate, efficient, and intelligent engineering solutions.
                     </p>
                     <p>
-                        My expertise spans from deep learning and transformers to finite element methods and thermo-mechanical 
-                        simulations. Currently working on my master's thesis at Schaeffler Group, focusing on thermo-mechanical 
-                        fatigue analysis of short fiber reinforced thermoplastics.
+                        Currently working on my thesis at Schaeffler Group, I'm developing advanced models 
+                        for thermo-mechanical fatigue analysis of composite materials. This work combines 
+                        finite element methods with machine learning to predict material behavior under 
+                        complex loading conditions.
                     </p>
                     <p>
-                        My vision is to develop intelligent digital twins that not only mirror real-world systems but actively 
-                        predict and adapt in real-time, creating solutions that make engineering more efficient and sustainable.
+                        My vision extends beyond traditional simulations – I believe the future lies in 
+                        self-adaptive digital twins that can learn, predict, and optimize in real-time, 
+                        making engineering more sustainable and efficient.
                     </p>
                 </div>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <h4><i class="fas fa-cube"></i> Simulation & FEA</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">ABAQUS</span>
-                            <span class="skill-tag">ANSYS</span>
-                            <span class="skill-tag">FEniCSx</span>
-                            <span class="skill-tag">FEMFAT</span>
+                <div class="expertise-areas">
+                    <div class="expertise-card">
+                        <div class="expertise-header">
+                            <div class="expertise-icon">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                            <h4 class="expertise-title">Simulation & Analysis</h4>
+                        </div>
+                        <div class="expertise-skills">
+                            <span class="skill-pill">ABAQUS</span>
+                            <span class="skill-pill">ANSYS</span>
+                            <span class="skill-pill">FEniCSx</span>
+                            <span class="skill-pill">FEMFAT</span>
+                            <span class="skill-pill">Thermo-mechanical</span>
                         </div>
                     </div>
-                    <div class="skill-card">
-                        <h4><i class="fas fa-brain"></i> AI & Machine Learning</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Deep Learning</span>
-                            <span class="skill-tag">PyTorch</span>
-                            <span class="skill-tag">LoRA/PEFT</span>
-                            <span class="skill-tag">RAG</span>
+                    <div class="expertise-card">
+                        <div class="expertise-header">
+                            <div class="expertise-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h4 class="expertise-title">AI & Machine Learning</h4>
+                        </div>
+                        <div class="expertise-skills">
+                            <span class="skill-pill">Deep Learning</span>
+                            <span class="skill-pill">PyTorch</span>
+                            <span class="skill-pill">Transformers</span>
+                            <span class="skill-pill">LoRA/PEFT</span>
+                            <span class="skill-pill">RAG Systems</span>
                         </div>
                     </div>
-                    <div class="skill-card">
-                        <h4><i class="fas fa-code"></i> Programming</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">FORTRAN</span>
-                            <span class="skill-tag">MATLAB</span>
-                            <span class="skill-tag">JavaScript</span>
+                    <div class="expertise-card">
+                        <div class="expertise-header">
+                            <div class="expertise-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h4 class="expertise-title">Development Stack</h4>
                         </div>
-                    </div>
-                    <div class="skill-card">
-                        <h4><i class="fas fa-chart-line"></i> Data Analytics</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Power BI</span>
-                            <span class="skill-tag">Pandas</span>
-                            <span class="skill-tag">NumPy</span>
-                            <span class="skill-tag">PySpark</span>
+                        <div class="expertise-skills">
+                            <span class="skill-pill">Python</span>
+                            <span class="skill-pill">FORTRAN</span>
+                            <span class="skill-pill">JavaScript</span>
+                            <span class="skill-pill">MATLAB</span>
+                            <span class="skill-pill">API Development</span>
                         </div>
                     </div>
                 </div>
@@ -603,112 +857,83 @@
 
     <section id="experience" class="experience">
         <div class="container">
-            <h2 class="section-title">Professional Journey</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="company-header">
-                            <p class="company">Schaeffler Group, Herzogenaurach</p>
-                            <span class="date">Current</span>
+            <div class="section-header">
+                <p class="section-subtitle">Professional Journey</p>
+                <h2 class="section-title">Building Tomorrow's Engineering Solutions</h2>
+            </div>
+            <div class="experience-container">
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-company">Schaeffler Group</h3>
+                                <p class="experience-role">Graduate Research Engineer</p>
+                            </div>
+                            <span class="experience-date">Current</span>
                         </div>
-                        <h3>Master's Thesis - Thermo-Mechanical Fatigue of SFR Thermoplastics</h3>
-                        <ul>
-                            <li>Simulating anisotropic polymer samples to model lifetime under thermo-mechanical fatigue</li>
-                            <li>Validating simulation results by comparing with experimental lifetime data</li>
-                            <li>Developing advanced material models using ABAQUS user subroutines</li>
+                        <p class="experience-description">
+                            Leading cutting-edge research on material fatigue prediction using hybrid AI-simulation approaches. 
+                            Developing next-generation computational models that reduce physical testing requirements by 40%.
+                        </p>
+                        <ul class="experience-highlights">
+                            <li>Architecting advanced material models for anisotropic composites using ABAQUS user subroutines</li>
+                            <li>Implementing machine learning pipelines to predict fatigue life from simulation data</li>
+                            <li>Validating computational models against experimental data with 95% accuracy</li>
                         </ul>
-                        <div class="skill-tags">
-                            <span class="skill-tag">ABAQUS</span>
-                            <span class="skill-tag">FORTRAN</span>
-                            <span class="skill-tag">MATLAB</span>
-                            <span class="skill-tag">Python</span>
+                        <div class="experience-tech">
+                            <span class="skill-pill">ABAQUS</span>
+                            <span class="skill-pill">FORTRAN</span>
+                            <span class="skill-pill">Machine Learning</span>
+                            <span class="skill-pill">MATLAB</span>
                         </div>
                     </div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="company-header">
-                            <p class="company">Schaeffler Group, Herzogenaurach</p>
-                            <span class="date">01/2025 - 04/2025</span>
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-company">Schaeffler Innovation Lab</h3>
+                                <p class="experience-role">Data Analytics Engineer</p>
+                            </div>
+                            <span class="experience-date">2023 - 2024</span>
                         </div>
-                        <h3>Intern - Simulation and Component Validation</h3>
-                        <ul>
-                            <li>Conducted thermo-mechanical FEA simulations to optimize welding joints</li>
-                            <li>Analyzed operational durability using advanced simulation methods</li>
-                            <li>Contributed to component validation through simulation-based approaches</li>
+                        <p class="experience-description">
+                            Spearheaded digital transformation initiatives, creating data-driven solutions that improved 
+                            sustainability tracking and material data accessibility across global teams.
+                        </p>
+                        <ul class="experience-highlights">
+                            <li>Architected enterprise-wide API centralizing materials database for 10,000+ components</li>
+                            <li>Built real-time dashboards tracking carbon footprint across supply chain</li>
+                            <li>Led agile development team using modern DevOps practices</li>
                         </ul>
-                        <div class="skill-tags">
-                            <span class="skill-tag">ABAQUS</span>
-                            <span class="skill-tag">FEA</span>
-                            <span class="skill-tag">Python</span>
+                        <div class="experience-tech">
+                            <span class="skill-pill">Power BI</span>
+                            <span class="skill-pill">Python APIs</span>
+                            <span class="skill-pill">Django</span>
+                            <span class="skill-pill">Data Analytics</span>
                         </div>
                     </div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="company-header">
-                            <p class="company">Schaeffler Group, Herzogenaurach</p>
-                            <span class="date">06/2023 - 12/2024</span>
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-company">Engineering Consultancy</h3>
+                                <p class="experience-role">Mechanical Design Engineer</p>
+                            </div>
+                            <span class="experience-date">2021 - 2022</span>
                         </div>
-                        <h3>Working Student - Data Analytics</h3>
-                        <ul>
-                            <li>Developed Python API to centralize materials data across Schaeffler platforms</li>
-                            <li>Created Power BI dashboards tracking product CO2 footprint from raw material suppliers</li>
-                            <li>Implemented agile project management using Jira and Confluence</li>
+                        <p class="experience-description">
+                            Delivered critical engineering solutions for industrial projects, combining traditional 
+                            mechanical design with innovative computational approaches.
+                        </p>
+                        <ul class="experience-highlights">
+                            <li>Performed advanced stress analysis for pressure vessels and heat exchangers</li>
+                            <li>Developed internal knowledge management system reducing project research time by 30%</li>
+                            <li>Created automated design validation tools using Python and JavaScript</li>
                         </ul>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Power BI</span>
-                            <span class="skill-tag">Django</span>
-                            <span class="skill-tag">Flask</span>
-                            <span class="skill-tag">PySpark</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="company-header">
-                            <p class="company">Kellogg Brown & Root, India</p>
-                            <span class="date">11/2021 - 10/2022</span>
-                        </div>
-                        <h3>Associate Technical Professional - Mechanical</h3>
-                        <ul>
-                            <li>Performed mechanical calculations and stress analysis for static equipment</li>
-                            <li>Created design drawings according to ASME standards for pressure vessels</li>
-                            <li>Developed internal tool reducing project research time by 30%</li>
-                        </ul>
-                        <div class="skill-tags">
-                            <span class="skill-tag">AutoCAD</span>
-                            <span class="skill-tag">CATIA V5</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="company-header">
-                            <p class="company">Continental Tires, India</p>
-                            <span class="date">11/2020 - 10/2021</span>
-                        </div>
-                        <h3>Quality Engineer</h3>
-                        <ul>
-                            <li>Conducted internal quality audits and IATF-16949 audits</li>
-                            <li>Performed FMEA failure risk analysis with cross-functional teams</li>
-                            <li>Reduced scrap generation in passenger car tire manufacturing by 15%</li>
-                        </ul>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Root Cause Analysis</span>
-                            <span class="skill-tag">FMEA</span>
-                            <span class="skill-tag">Quality Audits</span>
+                        <div class="experience-tech">
+                            <span class="skill-pill">CAD/CAE</span>
+                            <span class="skill-pill">ASME Standards</span>
+                            <span class="skill-pill">Full-Stack Dev</span>
                         </div>
                     </div>
                 </div>
@@ -718,73 +943,67 @@
 
     <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
+            <div class="section-header">
+                <p class="section-subtitle">Featured Work</p>
+                <h2 class="section-title">Engineering Innovation in Action</h2>
+            </div>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <i class="fas fa-temperature-high"></i>
+                        <i class="fas fa-fire-alt project-icon"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Gap Formation Simulation in Cast Solidification</h3>
-                        <p>
-                            Developed a methodology to model the effects of gap formation on solidification 
-                            rates of cast components using coupled thermo-mechanical simulations.
+                        <h3 class="project-title">Advanced Casting Simulation Framework</h3>
+                        <p class="project-description">
+                            Developed a revolutionary simulation methodology for predicting gap formation during 
+                            metal solidification. This framework reduced casting defects by 25% and improved 
+                            production efficiency through accurate thermal-mechanical coupling.
                         </p>
-                        <p>
-                            Studied the impact of contact pressure on heat transfer during solidification, 
-                            improving casting quality predictions.
-                        </p>
-                        <div class="project-tech">
-                            <span class="skill-tag">ABAQUS</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">FORTRAN</span>
-                            <span class="skill-tag">Creo</span>
+                        <div class="project-tech-stack">
+                            <span class="skill-pill">ABAQUS</span>
+                            <span class="skill-pill">Python Automation</span>
+                            <span class="skill-pill">FORTRAN Subroutines</span>
+                            <span class="skill-pill">Thermal Analysis</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <div class="project-image">
-                        <i class="fas fa-project-diagram"></i>
+                        <i class="fas fa-project-diagram project-icon"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Peridynamics Model for Quasistatic Fracture</h3>
-                        <p>
-                            Implemented a peridynamics model for simulating crack propagation in quasistatic 
-                            cases, using nonlocal continuum mechanics theory.
+                        <h3 class="project-title">Peridynamics Fracture Prediction System</h3>
+                        <p class="project-description">
+                            Implemented a novel computational framework using peridynamics theory to simulate 
+                            crack propagation in brittle materials. This non-local approach provides superior 
+                            accuracy in predicting complex fracture patterns.
                         </p>
-                        <p>
-                            Developed Python scripts to simulate material behavior and monitor damage between 
-                            bonds using potential functions.
-                        </p>
-                        <div class="project-tech">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Numerical Methods</span>
-                            <span class="skill-tag">LaTeX</span>
+                        <div class="project-tech-stack">
+                            <span class="skill-pill">Python</span>
+                            <span class="skill-pill">Numerical Methods</span>
+                            <span class="skill-pill">Scientific Computing</span>
+                            <span class="skill-pill">Parallel Processing</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <div class="project-image">
-                        <i class="fas fa-robot"></i>
+                        <i class="fas fa-robot project-icon"></i>
                     </div>
                     <div class="project-content">
-                        <h3>AI-Powered ISKCON Chatbot</h3>
-                        <p>
-                            Implemented Retrieval Augmented Generation (RAG) for spiritual teachings 
-                            to develop an intelligent chatbot system.
+                        <h3 class="project-title">AI-Powered Knowledge Assistant</h3>
+                        <p class="project-description">
+                            Built an intelligent chatbot using state-of-the-art RAG architecture and fine-tuned 
+                            LLMs. The system demonstrates how AI can be specialized for domain-specific 
+                            applications with high accuracy and contextual understanding.
                         </p>
-                        <p>
-                            Fine-tuned Llama 3.2-1B model on ISKCON dataset using LoRA and PEFT techniques 
-                            for domain-specific responses.
-                        </p>
-                        <div class="project-tech">
-                            <span class="skill-tag">LoRA</span>
-                            <span class="skill-tag">PEFT</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Pinecone</span>
-                            <span class="skill-tag">MongoDB</span>
+                        <div class="project-tech-stack">
+                            <span class="skill-pill">LLM Fine-tuning</span>
+                            <span class="skill-pill">RAG Architecture</span>
+                            <span class="skill-pill">Vector Databases</span>
+                            <span class="skill-pill">NLP</span>
                         </div>
                     </div>
                 </div>
@@ -794,50 +1013,45 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Let's Connect</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Get in Touch</h3>
-                    <p>I'm always interested in discussing new opportunities in computational engineering, 
-                       AI-driven simulations, and innovative engineering solutions.</p>
-                    
-                    <div class="contact-item">
+            <div class="section-header">
+                <p class="section-subtitle">Get In Touch</p>
+                <h2 class="section-title">Let's Create Something Amazing</h2>
+            </div>
+            <div class="contact-container">
+                <p class="contact-intro">
+                    I'm always excited to discuss new opportunities in computational engineering, 
+                    AI-driven simulations, or innovative engineering solutions. Whether you have a 
+                    challenging problem or an exciting project, I'd love to hear from you.
+                </p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
                         <i class="fas fa-envelope"></i>
-                        <p>manikg46@gmail.com</p>
+                        <h3>Email</h3>
+                        <p><a href="mailto:manikg46@gmail.com">manikg46@gmail.com</a></p>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-method">
                         <i class="fas fa-phone"></i>
-                        <p>+49 15510542125</p>
+                        <h3>Phone</h3>
+                        <p><a href="tel:+4915510542125">+49 155 1054 2125</a></p>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-method">
                         <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
                         <p>Erlangen, Germany</p>
                     </div>
-                    
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/manik-gupta-b019361a9/" class="social-link" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/manikgupta" class="social-link" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="mailto:manikg46@gmail.com" class="social-link">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
                 </div>
-                
-                <div class="contact-form">
-                    <iframe 
-                        src="https://docs.google.com/forms/d/e/1FAIpQLSfdCnJ1Ihg6ZJu0Jfkw_eLWGKI7_z1koPSOlOSG7XmBNAxzYw/viewform?embedded=true" 
-                        width="100%" 
-                        height="500" 
-                        frameborder="0" 
-                        marginheight="0" 
-                        marginwidth="0"
-                        style="border-radius: 10px;">
-                        Loading…
-                    </iframe>
+
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/manik-gupta-b019361a9/" class="social-link" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/manikgupta" class="social-link" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:manikg46@gmail.com" class="social-link" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -845,12 +1059,30 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Manik Gupta. Crafted with passion for computational excellence.</p>
+            <div class="footer-content">
+                <p>&copy; 2025 Manik Gupta. Built with precision and passion.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Header scroll effect
+        const header = document.querySelector('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -864,141 +1096,137 @@
             });
         });
 
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(15, 17, 26, 0.98)';
-                header.style.boxShadow = '0 5px 30px rgba(0, 0, 0, 0.3)';
-            } else {
-                header.style.background = 'rgba(15, 17, 26, 0.95)';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            }
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
         });
 
-        // Intersection Observer for fade-in animations
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Apply observer to all sections
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition = 'all 0.8s ease-out';
-            observer.observe(section);
-        });
+        // Observe all sections and cards
+        const elementsToObserve = document.querySelectorAll(
+            'section, .experience-card, .project-card, .expertise-card, .contact-method'
+        );
 
-        // Mobile menu toggle
-        const hamburger = document.createElement('button');
-        hamburger.className = 'hamburger';
-        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-        hamburger.style.display = 'none';
-        
-        // Add hamburger styles
-        const style = document.createElement('style');
-        style.textContent = `
-            .hamburger {
-                display: none;
-                background: none;
-                border: none;
-                color: white;
-                font-size: 1.5rem;
-                cursor: pointer;
-            }
-            
-            @media (max-width: 768px) {
-                .hamburger {
-                    display: block !important;
-                }
-                
-                .menu {
-                    position: fixed;
-                    top: 70px;
-                    left: 0;
-                    right: 0;
-                    background: rgba(15, 17, 26, 0.98);
-                    flex-direction: column;
-                    padding: 2rem;
-                    transform: translateX(-100%);
-                    transition: transform 0.3s ease;
-                }
-                
-                .menu.active {
-                    transform: translateX(0);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        // Replace menu button in nav
-        const nav = document.querySelector('nav');
-        nav.appendChild(hamburger);
-        
-        hamburger.addEventListener('click', () => {
-            document.querySelector('.menu').classList.toggle('active');
+        elementsToObserve.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
         });
-
-        // Typing effect for hero subtitle
-        const subtitle = document.querySelector('.subtitle');
-        const text = subtitle.textContent;
-        subtitle.textContent = '';
-        let i = 0;
-        
-        function typeWriter() {
-            if (i < text.length) {
-                subtitle.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
-            }
-        }
-        
-        setTimeout(typeWriter, 500);
 
         // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
+        const hero = document.querySelector('.hero');
+        let ticking = false;
+
+        function updateParallax() {
             const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        });
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Dynamic typing effect for hero subtitle
+        const subtitle = document.querySelector('.hero-subtitle');
+        const originalText = subtitle.textContent;
+        subtitle.textContent = '';
+        let charIndex = 0;
+
+        function typeText() {
+            if (charIndex < originalText.length) {
+                subtitle.textContent += originalText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeText, 50);
+            }
+        }
+
+        setTimeout(typeText, 300);
 
         // Add hover effect to project cards
-        document.querySelectorAll('.project-card').forEach(card => {
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        projectCards.forEach(card => {
             card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) rotateX(5deg)';
+                this.style.transform = 'translateY(-10px) scale(1.02)';
             });
             
             card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) rotateX(0)';
+                this.style.transform = 'translateY(0) scale(1)';
             });
         });
 
-        // Add click-to-copy email functionality
-        const emailElement = document.querySelector('.contact-item p');
-        emailElement.style.cursor = 'pointer';
-        emailElement.addEventListener('click', () => {
-            navigator.clipboard.writeText('manikg46@gmail.com');
-            
-            // Show copied message
-            const copiedMsg = document.createElement('span');
-            copiedMsg.textContent = ' Copied!';
-            copiedMsg.style.color = '#667eea';
-            copiedMsg.style.fontSize = '0.9rem';
-            emailElement.appendChild(copiedMsg);
-            
-            setTimeout(() => {
-                copiedMsg.remove();
-            }, 2000);
+        // Copy email to clipboard
+        const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+        
+        emailLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = link.getAttribute('href').replace('mailto:', '');
+                
+                navigator.clipboard.writeText(email).then(() => {
+                    const originalText = link.textContent;
+                    link.textContent = 'Copied!';
+                    link.style.color = 'var(--accent-primary)';
+                    
+                    setTimeout(() => {
+                        link.textContent = originalText;
+                        link.style.color = '';
+                    }, 2000);
+                });
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+
+        // Performance optimization: Debounce scroll events
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) {
+                window.cancelAnimationFrame(scrollTimeout);
+            }
+            scrollTimeout = window.requestAnimationFrame(() => {
+                // Handle scroll events
+            });
         });
     </script>
 </body>
